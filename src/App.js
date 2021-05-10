@@ -3,27 +3,62 @@ import randomColor from 'randomcolor';
 import { useState } from 'react';
 
 function App() {
-  const [defaultColor, setRandcomColor] = useState('fff');
+  // let userInputLuminosity;
+  // let userInputHue;
+  // const color = randomColor({
+  //   luminosity: userInputLuminosity,
+  //   hue: userInputHue,
+  // });
+  const [color, setRandcomColor] = useState('#fff');
   return (
     <div
       style={{
         textAlign: 'center',
       }}
     >
-      <h1>
-        {`The background color of this button corresponds to the hex code "${defaultColor}"`}
-      </h1>
+      <h1>{`Button color hex code: ${color}`}</h1>
       <br />
       <button
         style={{
-          backgroundColor: defaultColor,
+          backgroundColor: color,
           fontSize: '18px',
           width: '200px',
           height: '50px',
         }}
         onClick={() => setRandcomColor(randomColor())}
       >
-        Update button color
+        Update color
+      </button>
+      <br />
+      {/* <label>
+        Hue:
+        <input
+          onChange={(event) => {
+            randomColor.userInputHue(event.currentTarget.value);
+          }}
+        />
+      </label>
+      <br />
+      <label>
+        Luminosity:
+        <input
+          onChange={(event) => {
+            randomColor.userInputLuminosity(event.currentTarget.value);
+          }}
+        />
+      </label>
+      <br /> */}
+      <button
+        style={{
+          backgroundColor: '#fff',
+          fontSize: '18px',
+          width: '200px',
+          height: '50px',
+          margin: '30px',
+        }}
+        onClick={() => setRandcomColor('#fff')}
+      >
+        Back to default
       </button>
     </div>
   );
