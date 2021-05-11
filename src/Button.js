@@ -35,10 +35,11 @@ function Button({
       }
     >
       I am a funny button{' '}
-      <span role="img" aria-label="funny emoji">
-        🥸
+      <span role="img" aria-label="clown">
+        🤡
       </span>{' '}
-      . Don't believe me? Click me.
+      . Don't believe me? Click me. <br />I will change my color reaaaaally
+      slooooow..
     </button>
   );
 }

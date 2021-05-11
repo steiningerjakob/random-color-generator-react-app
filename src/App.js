@@ -13,6 +13,15 @@ const defaultButtonStyle = css`
   margin: 30px;
 `;
 
+// Currently disabled -- Array with a set of instructions
+// const instructions = [
+//   'Select a hue (e.g. blue)',
+//   'Select a luminosity (e.g. dark)',
+//   'Select a height (e.g. 100',
+//   'Select a width (e.g. 500)',
+//   '...or just do nothing and let the app surprise you :)',
+// ];
+
 function App() {
   // Initialize state variables
 
@@ -30,7 +39,12 @@ function App() {
     >
       {/* Display hex code in template string */}
 
-      <h1>{`Button color hex code: ${color}`}</h1>
+      <h1>
+        <span role="img" aria-label="waving hand">
+          👋
+        </span>{' '}
+        {`Welcome, friend. The funny button currently displays the color ${color}.`}
+      </h1>
 
       {/* Create Button component which defines color on click and at the same time displays color with transition of 2s */}
 
@@ -54,13 +68,26 @@ function App() {
         customWidth={customWidth}
         setCustomWidth={setCustomWidth}
       />
+      {/* Currently disabled -- Mapping over array to display instructions:
+      <div css={defaultButtonStyle}>
+        <ul>
+          {instructions.map((item) => {
+            // eslint-disable-next-line react/jsx-key
+            return <li>{item}</li>;
+          })}
+        </ul>
+      </div> */}
 
       {/* Create conditional rendering of button that returns main button color to default when clicked */}
 
       <div>
         {color !== '#fff' ? (
           <button css={defaultButtonStyle} onClick={() => changeColor('#fff')}>
-            I don't like all these colours.. <br />
+            I don't care for all these colours..{' '}
+            <span role="img" aria-label="shrugging">
+              🤷‍♀️
+            </span>
+            <br />
             Take me back to default!
           </button>
         ) : (
