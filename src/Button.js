@@ -1,5 +1,8 @@
+/** @jsxImportSource @emotion/react */
+import { css } from '@emotion/react';
 import randomColor from 'randomcolor';
 
+// Button component that passes random color state to parent via props destructuring
 function Button({
   color,
   changeColor,
@@ -8,16 +11,20 @@ function Button({
   customHeight,
   customWidth,
 }) {
+  // Style element via CSS-in-JS
+  const buttonStyle = css`
+    background-color: ${color};
+    transition: 2s;
+    font-size: 18px;
+    width: ${customWidth}px;
+    height: ${customHeight}px;
+    margin: 30px;
+  `;
+
   return (
     <button
-      style={{
-        backgroundColor: color,
-        transition: '2s',
-        fontSize: '18px',
-        width: `${customWidth}px`,
-        height: `${customHeight}px`,
-        margin: '30px',
-      }}
+      css={buttonStyle}
+      // Create random color hex or user-defined based on input in input elements
       onClick={() =>
         changeColor(
           randomColor({

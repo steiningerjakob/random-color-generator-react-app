@@ -1,7 +1,17 @@
-import './App.css';
+/** @jsxImportSource @emotion/react */
+import { css } from '@emotion/react';
 import { useState } from 'react';
 import Button from './Button.js';
 import UserInputs from './UserInputs';
+
+// Style element via CSS-in-JS
+const defaultButtonStyle = css`
+  font-size: 18px;
+  background-color: #fff;
+  width: 300px;
+  height: 60px;
+  margin: 30px;
+`;
 
 function App() {
   // Initialize state variables
@@ -9,8 +19,8 @@ function App() {
   const [color, changeColor] = useState('#fff');
   const [customHue, setCustomHue] = useState('');
   const [customLuminosity, setCustomLuminosity] = useState('');
-  const [customHeight, setCustomHeight] = useState('100px');
-  const [customWidth, setCustomWidth] = useState('200px');
+  const [customHeight, setCustomHeight] = useState(100);
+  const [customWidth, setCustomWidth] = useState(500);
 
   return (
     <div
@@ -49,17 +59,9 @@ function App() {
 
       <div>
         {color !== '#fff' ? (
-          <button
-            style={{
-              backgroundColor: '#fff',
-              fontSize: '18px',
-              width: '200px',
-              height: '50px',
-              margin: '30px',
-            }}
-            onClick={() => changeColor('#fff')}
-          >
-            Back to default
+          <button css={defaultButtonStyle} onClick={() => changeColor('#fff')}>
+            I don't like all these colours.. <br />
+            Take me back to default!
           </button>
         ) : (
           ''

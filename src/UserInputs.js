@@ -1,3 +1,20 @@
+/** @jsxImportSource @emotion/react */
+import { css } from '@emotion/react';
+
+// Style element via CSS-in-JS
+const inputStyles = css`
+  margin: 30px;
+  height: 30px;
+  width: 200px;
+  border-radius: 20px;
+  border: 1px solid #dcdcdc;
+  box-shadow: 1px 1px 8px 1px #dcdcdc;
+  background-color: lightyellow;
+  text-align: center;
+`;
+
+// Capture user input on hue, luminosity, height and width, and change variable state accordingly
+// Pass state to other components via destructured props
 function UserInputs({
   customHue,
   setCustomHue,
@@ -19,9 +36,7 @@ function UserInputs({
           onChange={(event) => {
             setCustomHue(event.currentTarget.value);
           }}
-          style={{
-            margin: '30px',
-          }}
+          css={inputStyles}
         />
       </label>
 
@@ -34,9 +49,7 @@ function UserInputs({
           onChange={(event) => {
             setCustomLuminosity(event.currentTarget.value);
           }}
-          style={{
-            margin: '30px',
-          }}
+          css={inputStyles}
         />
       </label>
 
@@ -52,9 +65,7 @@ function UserInputs({
           onChange={(event) => {
             setCustomHeight(event.currentTarget.value);
           }}
-          style={{
-            margin: '30px',
-          }}
+          css={inputStyles}
         />
       </label>
 
@@ -68,9 +79,7 @@ function UserInputs({
           onChange={(event) => {
             setCustomWidth(event.currentTarget.value);
           }}
-          style={{
-            margin: '30px',
-          }}
+          css={inputStyles}
         />
       </label>
     </div>
