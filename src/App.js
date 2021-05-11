@@ -1,23 +1,16 @@
 import './App.css';
-import randomColor from 'randomcolor';
 import { useState } from 'react';
+import Button from './Button.js';
+import UserInputs from './UserInputs';
 
 function App() {
   // Initialize state variables
 
-  const [color, setColor] = useState('#fff');
+  const [color, changeColor] = useState('#fff');
   const [customHue, setCustomHue] = useState('');
   const [customLuminosity, setCustomLuminosity] = useState('');
-
-  // Declare function to change state on event (i.e. user input)
-
-  function userInputHue(event) {
-    setCustomHue(event.currentTarget.value);
-  }
-
-  function userInputLuminosity(event) {
-    setCustomLuminosity(event.currentTarget.value);
-  }
+  const [customHeight, setCustomHeight] = useState('100px');
+  const [customWidth, setCustomWidth] = useState('200px');
 
   return (
     <div
@@ -28,76 +21,50 @@ function App() {
       {/* Display hex code in template string */}
 
       <h1>{`Button color hex code: ${color}`}</h1>
-      <br />
 
-      {/* // Create button that changes color on click, defaulting to random color if there is no user input */}
+      {/* Create Button component which defines color on click and at the same time displays color with transition of 2s */}
 
-      <button
-        style={{
-          backgroundColor: color,
-          transition: '2s',
-          fontSize: '18px',
-          width: '200px',
-          height: '50px',
-          margin: '30px',
-        }}
-        onClick={() =>
-          setColor(
-            randomColor({
-              luminosity: customLuminosity,
-              hue: customHue,
-            }),
-          )
-        }
-      >
-        Update color
-      </button>
-      <br />
+      <Button
+        color={color}
+        changeColor={changeColor}
+        customHue={customHue}
+        customLuminosity={customLuminosity}
+        customHeight={customHeight}
+        customWidth={customWidth}
+      />
 
-      {/* Create input field that triggers "change state" function above upon user input  */}
+      {/* Create input field that changes state of user-defined variables */}
+      <UserInputs
+        customHue={customHue}
+        setCustomHue={setCustomHue}
+        customLuminosity={customLuminosity}
+        setCustomLuminosity={setCustomLuminosity}
+        customHeight={customHeight}
+        setCustomHeight={setCustomHeight}
+        customWidth={customWidth}
+        setCustomWidth={setCustomWidth}
+      />
 
-      <label htmlFor="hue">
-        Hue:
-        <input
-          id="hue"
-          placeholder="blue"
-          value={customHue}
-          onChange={userInputHue}
-          style={{
-            margin: '30px',
-          }}
-        />
-      </label>
-      <br />
+      {/* Create conditional rendering of button that returns main button color to default when clicked */}
 
-      <label htmlFor="luminosity">
-        Luminosity:
-        <input
-          id="luminosity"
-          placeholder="dark"
-          value={customLuminosity}
-          onChange={userInputLuminosity}
-          style={{
-            margin: '30px',
-          }}
-        />
-      </label>
-      <br />
-
-      {/* Create button that returns main button color to default (i.e. white) when clicked */}
-
-      <button
-        style={{
-          backgroundColor: '#fff',
-          fontSize: '18px',
-          width: '200px',
-          height: '50px',
-          margin: '30px',
-        }}
-        onClick={() => setColor('#fff')}
-      >
-        Back to default
-      </button>
+      <div>
+        {color !== '#fff' ? (
+          <button
+            style={{
+              backgroundColor: '#fff',
+              fontSize: '18px',
+              width: '200px',
+              height: '50px',
+              margin: '30px',
+            }}
+            onClick={() => changeColor('#fff')}
+          >
+            Back to default
+          </button>
+        ) : (
+          ''
+        )}
+      </div>
     </div>
   );
 }
