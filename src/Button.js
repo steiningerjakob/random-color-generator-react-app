@@ -19,6 +19,7 @@ function Button({
     width: ${customWidth}px;
     height: ${customHeight}px;
     margin: 30px;
+    box-shadow: 4px 4px 8px 4px #dcdcdc;
   `;
 
   return (

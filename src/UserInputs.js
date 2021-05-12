@@ -2,8 +2,13 @@
 import { css } from '@emotion/react';
 
 // Style element via CSS-in-JS
+const sectionStyles = css`
+  display: flex;
+  justify-content: center;
+`;
+
 const inputStyles = css`
-  margin: 30px;
+  margin: 10px 30px 30px 30px;
   height: 30px;
   width: 200px;
   border-radius: 20px;
@@ -27,61 +32,66 @@ function UserInputs({
 }) {
   return (
     <div>
-      <label htmlFor="hue">
-        Hue:
-        <input
-          id="hue"
-          placeholder="blue"
-          value={customHue}
-          onChange={(event) => {
-            setCustomHue(event.currentTarget.value);
-          }}
-          css={inputStyles}
-        />
-      </label>
+      <section css={sectionStyles}>
+        <label htmlFor="hue">
+          Hue:
+          <br />
+          <input
+            id="hue"
+            placeholder="blue"
+            value={customHue}
+            onChange={(event) => {
+              setCustomHue(event.currentTarget.value);
+            }}
+            css={inputStyles}
+          />
+        </label>
 
-      <label htmlFor="luminosity">
-        Luminosity:
-        <input
-          id="luminosity"
-          placeholder="dark"
-          value={customLuminosity}
-          onChange={(event) => {
-            setCustomLuminosity(event.currentTarget.value);
-          }}
-          css={inputStyles}
-        />
-      </label>
+        <label htmlFor="luminosity">
+          Luminosity:
+          <br />
+          <input
+            id="luminosity"
+            placeholder="dark"
+            value={customLuminosity}
+            onChange={(event) => {
+              setCustomLuminosity(event.currentTarget.value);
+            }}
+            css={inputStyles}
+          />
+        </label>
+      </section>
+      <section css={sectionStyles}>
+        <label htmlFor="height">
+          Height:
+          <br />
+          <input
+            type="number"
+            id="height"
+            placeholder="100"
+            value={customHeight}
+            onChange={(event) => {
+              setCustomHeight(event.currentTarget.value);
+            }}
+            css={inputStyles}
+          />
+        </label>
 
-      <br />
-
-      <label htmlFor="height">
-        Height:
-        <input
-          type="number"
-          id="height"
-          placeholder="100"
-          value={customHeight}
-          onChange={(event) => {
-            setCustomHeight(event.currentTarget.value);
-          }}
-          css={inputStyles}
-        />
-      </label>
-
-      <label htmlFor="width">
-        Width:
-        <input
-          type="number"
-          id="width"
-          placeholder="200"
-          value={customWidth}
-          onChange={(event) => {
-            setCustomWidth(event.currentTarget.value);
-          }}
-          css={inputStyles}
-        />
-      </label>
+        <label htmlFor="width">
+          Width:
+          <br />
+          <input
+            type="number"
+            id="width"
+            placeholder="200"
+            value={customWidth}
+            onChange={(event) => {
+              setCustomWidth(event.currentTarget.value);
+            }}
+            css={inputStyles}
+          />
+        </label>
+      </section>
     </div>
   );
 }

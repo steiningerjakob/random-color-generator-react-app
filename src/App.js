@@ -11,6 +11,7 @@ const defaultButtonStyle = css`
   width: 300px;
   height: 60px;
   margin: 30px;
+  box-shadow: 4px 4px 8px 4px #dcdcdc;
 `;
 
 // Currently disabled -- Array with a set of instructions
