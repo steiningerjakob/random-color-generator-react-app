@@ -18,6 +18,20 @@ const inputStyles = css`
   text-align: center;
 `;
 
+const dropdownStyles = css`
+  margin: 10px 30px 30px 30px;
+  height: 30px;
+  width: 200px;
+  border-radius: 5px;
+  border: 1px solid #dcdcdc;
+  box-shadow: 1px 1px 8px 1px #dcdcdc;
+  background-color: lightgrey;
+  text-align: center;
+  padding-left: 10px;
+`;
+
+const dropdown = ['light', 'dark'];
+
 // Capture user input on hue, luminosity, height and width, and change variable state accordingly
 // Pass state to other components via destructured props
 function UserInputs({
@@ -50,15 +64,19 @@ function UserInputs({
         <label htmlFor="luminosity">
           Luminosity:
           <br />
-          <input
+          <select
             id="luminosity"
-            placeholder="dark"
+            placeholder="light"
             value={customLuminosity}
             onChange={(event) => {
               setCustomLuminosity(event.currentTarget.value);
             }}
-            css={inputStyles}
-          />
+            css={dropdownStyles}
+          >
+            {dropdown.map((item) => {
+              return <option key={dropdown[item]}>{item}</option>;
+            })}
+          </select>
         </label>
       </section>
       <section css={sectionStyles}>
