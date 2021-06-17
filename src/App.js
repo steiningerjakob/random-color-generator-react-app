@@ -9,24 +9,20 @@ const defaultButtonStyle = css`
   font-size: 18px;
   background-color: #fff;
   width: 300px;
-  height: 60px;
   margin: 30px;
+  padding: 16px;
   box-shadow: 4px 4px 8px 4px #dcdcdc;
-`;
+  border-radius: 8px;
 
-// Currently disabled -- Array with a set of instructions
-// const instructions = [
-//   'Select a hue (e.g. blue)',
-//   'Select a luminosity (e.g. dark)',
-//   'Select a height (e.g. 100',
-//   'Select a width (e.g. 500)',
-//   '...or just do nothing and let the app surprise you :)',
-// ];
+  > span {
+    display: inline;
+  }
+`;
 
 function App() {
   // Initialize state variables
 
-  const [color, changeColor] = useState('#fff');
+  const [color, setColor] = useState('#fff');
   const [customHue, setCustomHue] = useState('');
   const [customLuminosity, setCustomLuminosity] = useState('');
   const [customHeight, setCustomHeight] = useState(100);
@@ -41,7 +37,7 @@ function App() {
       {/* Display hex code in template string */}
 
       <h1>
-        <span role="img" aria-label="waving hand">
+        <span role="img" aria-label="waving hand emoji">
           👋
         </span>{' '}
         {`Welcome, friend. The funny button currently displays the color ${color}.`}
@@ -51,7 +47,7 @@ function App() {
 
       <Button
         color={color}
-        changeColor={changeColor}
+        changeColor={setColor}
         customHue={customHue}
         customLuminosity={customLuminosity}
         customHeight={customHeight}
@@ -69,27 +65,18 @@ function App() {
         customWidth={customWidth}
         setCustomWidth={setCustomWidth}
       />
-      {/* Currently disabled -- Mapping over array to display instructions:
-      <div css={defaultButtonStyle}>
-        <ul>
-          {instructions.map((item) => {
-            // eslint-disable-next-line react/jsx-key
-            return <li>{item}</li>;
-          })}
-        </ul>
-      </div> */}
 
       {/* Create conditional rendering of button that returns main button color to default when clicked */}
 
       <div>
         {color !== '#fff' ? (
-          <button css={defaultButtonStyle} onClick={() => changeColor('#fff')}>
+          <button css={defaultButtonStyle} onClick={() => setColor('#fff')}>
             I don't care for all these colours..{' '}
-            <span role="img" aria-label="shrugging">
+            <span role="img" aria-label="shrugging emoji">
               🤷‍♀️
             </span>
             <br />
-            Take me back to default!
+            Back to default!
           </button>
         ) : (
           ''
